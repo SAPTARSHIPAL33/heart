@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="A cinematic romantic experience crafted with love">
+    <meta name="theme-color" content="#1a0000">
+    <title>For You ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing">
+        <div class="ambient-glow"></div>
+        <div class="landing-content">
+            <div class="subtitle">tap to begin</div>
+            <button id="startBtn">Madam All Yours ❤️</button>
+            <div class="sparkle-ring"></div>
+        </div>
+        <div class="floating-hearts" aria-hidden="true"></div>
+    </div>
+
+    <!-- Animation Scene -->
+    <div id="scene" class="hidden">
+        <canvas id="canvas"></canvas>
+        <div id="message" class="hidden">
+            <!-- ✨ CUSTOMIZE YOUR ROMANTIC MESSAGE BELOW ✨ -->
+            <p class="msg-text">For Someone Special ❤️</p>
+        </div>
+    </div>
+
+    <!--
+        🎵 BACKGROUND MUSIC
+        Replace the src below with your own MP3 file path.
+        Place your MP3 file in the same folder and update the filename.
+        Example: <source src="my-song.mp3" type="audio/mpeg">
+    -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
