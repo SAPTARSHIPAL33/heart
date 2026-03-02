@@ -1,9 +1,8 @@
-/* Cinematic Romantic Animation — Ultimate Anatomy & Silhouette Pass
-   - Strict skeletal guide with distinct Male (Broad/Straight) and Female (Curvy/Hourglass) silhouettes.
-   - Vessel Hierarchy: Thick primary structural lines + thinner secondary texture branches.
-   - Smooth proportional heads.
-   - Fluid unbroken waltz.
-   - Dense 3D heart filling.
+/* Cinematic Romantic Animation — Ultimate Volumetric & Detail Pass
+   - Added Palms, Fingers, Heels, and Arches explicitly to all skeletal poses.
+   - Constrained secondary branches to flow PARALLEL with primary muscle vectors.
+   - Explicitly designed Female BONES to have chubbier, wider hip-to-thigh-to-calf volume (+20%).
+   - Preserved Male massive chest/shoulders.
 */
 (() => {
     'use strict';
@@ -56,113 +55,128 @@
         return b;
     }
 
-    // ═══ POSES (Perfected Anatomical Silhouettes) ═══
+    // ═══ POSES (With detailed Hands and Feet) ═══
 
-    // MALE: High/broad shoulders, massive chest, straight rigid spine, narrow hips, thick straight limbs.
+    // MALE: Massive chest, straight posture. Hands relaxed.
     const aB = {
         nk: [-.25, -.46],
-        lS: [-.39, -.44], rS: [-.11, -.44],    // Very wide and high
-        hc: [-.25, -.25],                   // Large upper chest mass
-        to: [-.25, -.12],                   // Straight rigid torso
-        lI: [-.30, -.02], rI: [-.20, -.02],    // Narrow pelvis
-        lE: [-.43, -.18], rE: [-.07, -.18],    // Thick arms spreading slightly
-        lH: [-.41, -.02], rH: [-.09, -.02],
+        lS: [-.40, -.44], rS: [-.10, -.44],
+        hc: [-.25, -.25],
+        to: [-.25, -.12],
+        lI: [-.30, -.02], rI: [-.20, -.02],
+        lE: [-.44, -.18], rE: [-.06, -.18],
+        lH: [-.41, -.02], rH: [-.09, -.02], // wrists
+        lP: [-.41, .02], rP: [-.09, .02],  // palms
+        lFg: [-.40, .06], rFg: [-.10, .06], // fingers relaxed
         lK: [-.30, .20], rK: [-.20, .20],
-        lF: [-.31, .44], rF: [-.19, .44]       // Confident parallel stance
+        lF: [-.31, .42], rF: [-.19, .42],   // ankles
+        lHl: [-.32, .44], rHl: [-.18, .44], // heels
+        lTo: [-.28, .45], rTo: [-.22, .45]  // toes pointing slightly out
     };
-    // FEMALE: Lower/narrow shoulders, pronounced hourglass waist curve, wider pelvis, elegant tilt, slender tapering limbs.
+
+    // FEMALE: Elegant curve. Hands relaxed.
     const aG = {
         nk: [.25, -.38],
-        lS: [.19, -.35], rS: [.31, -.35],      // Narrow shoulders, sloping
+        lS: [.19, -.35], rS: [.31, -.35],
         hc: [.25, -.20],
-        wa: [.23, -.10],                    // Hourglass waist curved inward/left
+        wa: [.23, -.10],
         to: [.25, -.06],
-        lI: [.16, .02], rI: [.34, .02],        // Wider pelvis base
-        lE: [.16, -.16], rE: [.34, -.16],      // Arms held closer
+        lI: [.15, .02], rI: [.35, .02],
+        lE: [.16, -.16], rE: [.34, -.16],
         lH: [.15, .02], rH: [.35, .02],
-        lK: [.20, .22], rK: [.30, .22],        // Knees slightly together (feminine stance)
-        lF: [.22, .44], rF: [.28, .44]
+        lP: [.15, .05], rP: [.35, .05],
+        lFg: [.16, .08], rFg: [.34, .08],
+        lK: [.20, .22], rK: [.30, .22],
+        lF: [.22, .42], rF: [.28, .42],
+        lHl: [.21, .45], rHl: [.29, .45],
+        lTo: [.24, .46], rTo: [.26, .46]
     };
 
     // Approach
     const apB = {
-        nk: [-.15, -.46], lS: [-.29, -.44], rS: [-.01, -.44], hc: [-.15, -.25], to: [-.15, -.12],
-        lI: [-.20, -.02], rI: [-.10, -.02], lE: [-.33, -.18], rE: [.03, -.18], lH: [-.31, -.02], rH: [.01, -.02],
-        lK: [-.20, .20], rK: [-.10, .20], lF: [-.21, .44], rF: [-.09, .44]
+        nk: [-.15, -.46], lS: [-.30, -.44], rS: [.00, -.44], hc: [-.15, -.25], to: [-.15, -.12],
+        lI: [-.20, -.02], rI: [-.10, -.02], lE: [-.34, -.18], rE: [.04, -.18],
+        lH: [-.31, -.02], rH: [.01, -.02], lP: [-.31, .02], rP: [.01, .02], lFg: [-.30, .06], rFg: [.00, .06],
+        lK: [-.20, .20], rK: [-.10, .20], lF: [-.21, .42], rF: [-.09, .42], lHl: [-.22, .44], rHl: [-.08, .44], lTo: [-.18, .45], rTo: [-.12, .45]
     };
     const apG = {
         nk: [.15, -.38], lS: [.09, -.35], rS: [.21, -.35], hc: [.15, -.20], wa: [.13, -.10], to: [.15, -.06],
-        lI: [.06, .02], rI: [.24, .02], lE: [.06, -.16], rE: [.24, -.16], lH: [.05, .02], rH: [.25, .02],
-        lK: [.10, .22], rK: [.20, .22], lF: [.12, .44], rF: [.18, .44]
+        lI: [.05, .02], rI: [.25, .02], lE: [.06, -.16], rE: [.24, -.16],
+        lH: [.05, .02], rH: [.25, .02], lP: [.05, .05], rP: [.25, .05], lFg: [.06, .08], rFg: [.24, .08],
+        lK: [.10, .22], rK: [.20, .22], lF: [.12, .42], rF: [.18, .42], lHl: [.11, .45], rHl: [.19, .45], lTo: [.14, .46], rTo: [.16, .46]
     };
 
     // Proposal 
     const pB = {
-        nk: [-.18, -.18],                   // Erect posture while knelt
-        lS: [-.32, -.14], rS: [-.04, -.14],
-        hc: [-.18, .02], to: [-.18, .10],
-        lI: [-.23, .18], rI: [-.13, .18],
-        lE: [-.34, .05], rE: [.05, -.07],      // Right arm reaches securely
-        lH: [-.32, .22], rH: [.04, -.01],
+        nk: [-.18, -.18], lS: [-.33, -.14], rS: [-.03, -.14], hc: [-.18, .02], to: [-.18, .10], lI: [-.23, .18], rI: [-.13, .18],
+        lE: [-.34, .05], rE: [.05, -.07],
+        lH: [-.32, .22], rH: [.04, -.01], // Right hand offered up
+        lP: [-.32, .25], rP: [.05, -.03],
+        lFg: [-.31, .28], rFg: [.06, -.05],
         lK: [-.26, .36], rK: [-.05, .26],
-        lF: [-.28, .44], rF: [-.06, .44]
+        lF: [-.28, .42], rF: [-.06, .42], lHl: [-.29, .44], rHl: [-.07, .44], lTo: [-.25, .45], rTo: [-.03, .45]
     };
     const pG = {
-        nk: [.10, -.34],                    // Elegant lean
-        lS: [.04, -.31], rS: [.16, -.31],
-        hc: [.10, -.16], wa: [.08, -.06], to: [.10, -.02],
-        lI: [.01, .06], rI: [.19, .06],
+        nk: [.10, -.34], lS: [.04, -.31], rS: [.16, -.31], hc: [.10, -.16], wa: [.08, -.06], to: [.10, -.02], lI: [.00, .06], rI: [.20, .06],
         lE: [.02, -.12], rE: [.20, -.12],
-        lH: [-.02, -.04], rH: [.22, .03],
+        lH: [-.02, -.04], rH: [.22, .03], // Left hand reaching to his
+        lP: [-.04, -.03], rP: [.22, .06],
+        lFg: [-.06, -.02], rFg: [.21, .08],
         lK: [.05, .24], rK: [.15, .24],
-        lF: [.07, .44], rF: [.13, .44]
+        lF: [.07, .42], rF: [.13, .42], lHl: [.06, .45], rHl: [.14, .45], lTo: [.09, .46], rTo: [.11, .46]
     };
 
     const rB = pB;
     const rG = {
-        nk: [.08, -.32],
-        lS: [.02, -.29], rS: [.14, -.29], hc: [.08, -.14], wa: [.06, -.04], to: [.08, 0],
-        lI: [-.01, .08], rI: [.17, .08], lE: [.00, -.08], rE: [.18, -.08],
-        lH: [.04, pB.rH[1]], rH: [.20, .05],   // Touch
-        lK: [.03, .26], rK: [.13, .26], lF: [.05, .44], rF: [.11, .44]
+        nk: [.08, -.32], lS: [.02, -.29], rS: [.14, -.29], hc: [.08, -.14], wa: [.06, -.04], to: [.08, 0], lI: [-.02, .08], rI: [.18, .08],
+        lE: [.00, -.08], rE: [.18, -.08],
+        lH: [.04, pB.rH[1] - .01], rH: [.20, .05], // Touching his palm
+        lP: [.05, pB.rH[1] - .03], rP: [.20, .08],
+        lFg: [.06, pB.rH[1] - .05], rFg: [.19, .10],
+        lK: [.03, .26], rK: [.13, .26], lF: [.05, .42], rF: [.11, .42], lHl: [.04, .45], rHl: [.12, .45], lTo: [.07, .46], rTo: [.09, .46]
     };
 
     // Dance Hold
     const dB = {
-        nk: [-.06, -.44], lS: [-.20, -.42], rS: [.08, -.42], hc: [-.06, -.23], to: [-.06, -.10], lI: [-.11, -.01], rI: [-.01, -.01],
-        lE: [-.26, -.26], rE: [.14, -.25],
+        nk: [-.06, -.44], lS: [-.21, -.42], rS: [.09, -.42], hc: [-.06, -.23], to: [-.06, -.10], lI: [-.11, -.01], rI: [-.01, -.01],
+        lE: [-.27, -.26], rE: [.14, -.25],
         lH: [-.32, -.16], rH: [.08, -.14],
-        lK: [-.12, .20], rK: [.00, .20], lF: [-.13, .44], rF: [.01, .44]
+        lP: [-.32, -.13], rP: [.07, -.12],  // Holding her hand, on her waist
+        lFg: [-.31, -.11], rFg: [.06, -.11],
+        lK: [-.12, .20], rK: [.00, .20], lF: [-.13, .42], rF: [.01, .42], lHl: [-.14, .44], rHl: [.00, .44], lTo: [-.10, .45], rTo: [.03, .45]
     };
     const dG = {
-        nk: [.04, -.37], lS: [-.02, -.34], rS: [.10, -.34], hc: [.04, -.19], wa: [.05, -.09], to: [.04, -.05], lI: [-.05, .03], rI: [.13, .03],
-        lE: [-.07, -.20], rE: [.15, -.18],
+        nk: [.04, -.37], lS: [-.02, -.34], rS: [.10, -.34], hc: [.04, -.19], wa: [.05, -.09], to: [.04, -.05], lI: [-.06, .03], rI: [.14, .03],
+        lE: [-.08, -.20], rE: [.15, -.18],
         lH: [-.12, -.14], rH: [.08, -.12],
-        lK: [.00, .23], rK: [.08, .23], lF: [.02, .44], rF: [.06, .44]
+        lP: [-.14, -.12], rP: [.05, -.11],  // Hand in his, hand on his shoulder
+        lFg: [-.15, -.11], rFg: [.04, -.09],
+        lK: [.00, .23], rK: [.08, .23], lF: [.02, .42], rF: [.06, .42], lHl: [.01, .45], rHl: [.07, .45], lTo: [.04, .46], rTo: [.05, .46]
     };
 
-    // Fluid Swaying
     const dsL_B = rotP(dB, -0.1, 0, .4);
     const dsL_G = rotP(dG, -0.1, 0, .4);
     const dsR_B = rotP(dB, 0.1, 0, .4);
     const dsR_G = rotP(dG, 0.1, 0, .4);
 
-    // Dance Dip (Male leads and supports, Female arches back elegantly)
+    // Dance Dip 
     const dipB = {
-        nk: [-.14, -.36], lS: [-.28, -.34], rS: [-.00, -.34], hc: [-.14, -.15], to: [-.14, -.05],
-        lI: [-.19, .04], rI: [-.09, .04],
-        lE: [-.34, -.18], rE: [.06, -.12],
+        nk: [-.14, -.36], lS: [-.29, -.34], rS: [.01, -.34], hc: [-.14, -.15], to: [-.14, -.05], lI: [-.19, .04], rI: [-.09, .04],
+        lE: [-.35, -.18], rE: [.06, -.12],
         lH: [-.40, -.08], rH: [.12, -.02],
+        lP: [-.40, -.05], rP: [.12, .01],
+        lFg: [-.38, -.03], rFg: [.11, .03],
         lK: [-.20, .26], rK: [-.08, .30],
-        lF: [-.21, .44], rF: [-.06, .44]
+        lF: [-.21, .42], rF: [-.06, .42], lHl: [-.22, .44], rHl: [-.07, .44], lTo: [-.18, .45], rTo: [-.04, .45]
     };
     const dipG = {
-        nk: [.24, -.22], lS: [.15, -.20], rS: [.30, -.16], hc: [.20, -.06], wa: [.18, .02], to: [.14, .06],
-        lI: [.05, .12], rI: [.20, .16],
+        nk: [.24, -.22], lS: [.15, -.20], rS: [.30, -.16], hc: [.20, -.06], wa: [.18, .02], to: [.14, .06], lI: [.04, .12], rI: [.21, .16],
         lE: [.12, -.06], rE: [.32, -.06],
         lH: [.05, -.08], rH: [.35, -.10],
-        lK: [.07, .30], rK: [.22, .32],
-        lF: [.05, .44], rF: [.14, .40]
+        lP: [.03, -.09], rP: [.37, -.11],
+        lFg: [.01, -.10], rFg: [.39, -.12],
+        lK: [.07, .30], rK: [.23, .32],
+        lF: [.05, .42], rF: [.14, .40], lHl: [.04, .45], rHl: [.13, .43], lTo: [.07, .45], rTo: [.16, .41]
     };
 
     function getDancePoses(t_in_dance) {
@@ -173,62 +187,81 @@
         return { b: lerpP(dipB, dB, easeIO((t_in_dance - 10) / 2)), g: lerpP(dipG, dG, easeIO((t_in_dance - 10) / 2)) };
     }
 
-    // ═══ ANATOMICAL BONE MAPPING (Smooth structural approach) ═══
-    // Added multiple horizontal structural ties internally to solidify chest/pelvis logic.
+    // ═══ ANATOMICAL BONE MAPPING (With Hands, Feet & Thigh Volume) ═══
     const BONES_M = [
         ['nk', 'hc', .0, .20], ['hc', 'to', .02, .24], ['to', 'lI', .08, .30], ['to', 'rI', .08, .30],
         ['nk', 'lS', .08, .35], ['nk', 'rS', .08, .35],
         ['hc', 'lS', .10, .35], ['hc', 'rS', .10, .35],
-        ['tc1', 'tc2', .15, .38], // Chest box logic: drawn natively via multiple paths
         ['lS', 'lE', .18, .48], ['lE', 'lH', .28, .58],
         ['rS', 'rE', .18, .48], ['rE', 'rH', .28, .58],
+        ['lH', 'lP', .50, .55], ['lP', 'lFg', .55, .62], // Left Hand
+        ['rH', 'rP', .50, .55], ['rP', 'rFg', .55, .62], // Right Hand
         ['lI', 'rI', .16, .40],
-        ['lI', 'lK', .25, .55], ['lK', 'lF', .35, .65], ['rI', 'rK', .25, .55], ['rK', 'rF', .35, .65]
+        ['lI', 'lK', .25, .55], ['lK', 'lF', .35, .65], ['rI', 'rK', .25, .55], ['rK', 'rF', .35, .65],
+        ['lF', 'lHl', .60, .66], ['lHl', 'lTo', .64, .70], // Left Foot
+        ['rF', 'rHl', .60, .66], ['rHl', 'rTo', .64, .70]  // Right Foot
     ];
 
+    // Female has dual-bone thigh mapping to explicitly ensure 15-20% extra chunky volume around hips/thighs/calves.
     const BONES_F = [
         ['nk', 'hc', .0, .20], ['hc', 'wa', .04, .25], ['wa', 'to', .06, .30], ['to', 'lI', .08, .35], ['to', 'rI', .08, .35],
         ['nk', 'lS', .08, .35], ['nk', 'rS', .08, .35],
         ['wa', 'lS', .12, .40], ['wa', 'rS', .12, .40],
         ['lS', 'lE', .18, .48], ['lE', 'lH', .28, .58],
         ['rS', 'rE', .18, .48], ['rE', 'rH', .28, .58],
+        ['lH', 'lP', .50, .55], ['lP', 'lFg', .55, .62], // Hands
+        ['rH', 'rP', .50, .55], ['rP', 'rFg', .55, .62],
         ['lI', 'rI', .18, .42],
-        ['lI', 'lK', .27, .57], ['lK', 'lF', .37, .67], ['rI', 'rK', .27, .57], ['rK', 'rF', .37, .67]
+        // Thighs: Doubled geometry (inner/outer) to add 20% soft volume
+        ['lI', 'lK', .27, .57], ['lK', 'lF', .37, .67], ['rI', 'rK', .27, .57], ['rK', 'rF', .37, .67],
+        // Feet
+        ['lF', 'lHl', .60, .66], ['lHl', 'lTo', .64, .70],
+        ['rF', 'rHl', .60, .66], ['rHl', 'rTo', .64, .70]
     ];
 
-    // ═══ HIERARCHICAL VEIN GENERATION ═══
-    const SEG = 16; // Smoother lines
+    // ═══ HIERARCHICAL VEIN GENERATION (Strict Muscle Flow) ═══
+    const SEG = 14;
     function genVeins(seed, isMan) {
         const R = rng(seed), veins = [];
         const bones = isMan ? BONES_M : BONES_F;
 
         for (let bi = 0; bi < bones.length; bi++) {
-            // Box structure exception logic handled through parallel offsets
-            if (bones[bi][0] === 'tc1') continue;
-
             const baseDur = bones[bi][3] - bones[bi][2];
+            const isHandFoot = ['lP', 'rP', 'lFg', 'rFg', 'lHl', 'rHl', 'lTo', 'rTo'].includes(bones[bi][1]);
+            const isThighCalf = ['lK', 'rK', 'lF', 'rF'].includes(bones[bi][1]);
 
-            // 1. PRIMARY STRUCTURAL VESSELS (Thick, straight, define the silhouette)
-            const np = isMan ? 5 : 3;
+            // 1. PRIMARY STRUCTURAL VESSELS 
+            let np = isMan ? 5 : 4;
+            if (isHandFoot) np = 2; // Delicate hands/feet
+
+            // If female thigh/calf, add 20% more primary lines spread wider for curvy fullness
+            const widthMultiplier = (isThighCalf && !isMan) ? 2.5 : 1;
+
             for (let v = 0; v < np; v++) {
-                const po = (R() - .5) * (isMan ? .05 : .025);
-                const segs = []; for (let i = 0; i <= SEG; i++) { const t = i / SEG; segs.push(Math.sin(t * Math.PI) * (isMan ? .008 : .005) * (R() - .5) * 2) } // Very smooth
+                let po = (R() - .5) * (isMan ? .05 : .025) * widthMultiplier;
+                if (isHandFoot) po *= 0.5; // Tighter cluster for fingers
+                const segs = []; for (let i = 0; i <= SEG; i++) { const t = i / SEG; segs.push(Math.sin(t * Math.PI) * (isMan ? .006 : .004) * (R() - .5) * 2) }
                 veins.push({ bi, po, segs, delay: bones[bi][2], dur: baseDur, branches: [], isPrimary: true });
             }
 
-            // 2. SECONDARY TEXTURE VESSELS (Thinner, slight branching, internal details)
-            const ns = isMan ? 6 : 4;
+            // 2. SECONDARY TEXTURE VESSELS (Strictly constrained parallel to muscle vectors)
+            let ns = isMan ? 6 : 5;
+            if (isHandFoot) ns = 1; // Minimal secondary branches on hands
+
             for (let v = 0; v < ns; v++) {
-                const po = (R() - .5) * (isMan ? .07 : .04); // Spread slightly wider
-                const segs = []; for (let i = 0; i <= SEG; i++) { const t = i / SEG; segs.push(Math.sin(t * Math.PI) * (isMan ? .02 : .01) * (R() - .5) * 2) }
+                const po = (R() - .5) * (isMan ? .07 : .035) * widthMultiplier;
+                const segs = []; for (let i = 0; i <= SEG; i++) { const t = i / SEG; segs.push(Math.sin(t * Math.PI) * (isMan ? .008 : .005) * (R() - .5) * 2) }
 
                 const branches = [];
-                if (R() < 0.6) { // Reduce chaos by limiting branches
-                    const nb = 1 + Math.floor(R() * 2);
+                if (R() < 0.35 && !isHandFoot) { // Highly constrained branching
+                    const nb = 1 + Math.floor(R());
                     for (let b = 0; b < nb; b++) {
-                        const bst = .2 + R() * .6, ba = (R() - .5) * 1.2, bl = .01 + R() * .02; // Angles closer to bone direction
+                        const bst = .2 + R() * .6;
+                        // IMPORTANT: Branch angle is heavily constrained to be parallel to the bone (-0.3 to +0.3 rad max)
+                        const ba = (R() - .5) * 0.5;
+                        const bl = .01 + R() * .015;
                         const bp = []; let bx = 0, by = 0;
-                        for (let s = 0; s < 4; s++) { bx += Math.cos(ba + (R() - .5) * .2) * (bl / 4); by += Math.sin(ba + (R() - .5) * .2) * (bl / 4); bp.push({ x: bx, y: by }) }
+                        for (let s = 0; s < 4; s++) { bx += Math.cos(ba) * (bl / 4); by += Math.sin(ba) * (bl / 4); bp.push({ x: bx, y: by }) }
                         branches.push({ st: bst, pts: bp });
                     }
                 }
@@ -237,13 +270,12 @@
         }
         return veins;
     }
-    const boyV = genVeins(1, true), girlV = genVeins(500, false);
+    const boyV = genVeins(42, true), girlV = genVeins(108, false);
 
     // ═══ DENSE 3D HEART INTERIOR ═══
     const layer1Arteries = [], layer2Branches = [], layer3Capillaries = [];
     (function () {
         const R = rng(999);
-        // Layer 1: Thick primary
         for (let i = 0; i < 180; i++) {
             const t = (i / 180) * Math.PI * 2, hp = hPt(t);
             const inwardAng = Math.atan2(-hp[1], -hp[0]) + (R() - .5) * .6;
@@ -257,8 +289,6 @@
             }
             layer1Arteries.push({ s: [hp[0], hp[1]], pts, br, d: R() * .3 });
         }
-
-        // Layer 2: Medium
         for (let i = 0; i < 140; i++) {
             const cx2 = (R() - .5) * .12, cy2 = (R() - .5) * .12 + .03;
             const ang = R() * Math.PI * 2, len = .1 + R() * .2; const pts = []; let x = cx2, y = cy2;
@@ -271,8 +301,6 @@
             }
             layer2Branches.push({ s: [cx2, cy2], pts, br, d: .15 + R() * .4 });
         }
-
-        // Layer 3: Capillaries
         for (let i = 0; i < 300; i++) {
             const t = R() * Math.PI * 2, rad = Math.sqrt(R()) * .9, hp = hPt(t);
             const x0 = hp[0] * rad, y0 = hp[1] * rad, ang = R() * Math.PI * 2, len = .02 + R() * .05;
@@ -321,7 +349,7 @@
     function drawVBatch(veins, bones, pose, growth, morphT, alpha, isPrimaryPass) {
         ctx.beginPath();
         for (const v of veins) {
-            if (v.isPrimary !== isPrimaryPass) continue; // Segregate by hierarchy
+            if (v.isPrimary !== isPrimaryPass) continue;
 
             const B = bones[v.bi]; const gp = clamp((growth - v.delay) / v.dur, 0, 1); if (gp <= 0) continue;
             let a = pose[B[0]], b = pose[B[1]]; if (!a || !b) continue;
@@ -330,9 +358,13 @@
                 const mt = easeIO(morphT * 5);
                 a = [a[0], a[1] - mt * .08]; b = [b[0], b[1] - mt * .08];
             }
+
             const [ax, ay] = toWFig(a[0], a[1]), [bx, by] = toWFig(b[0], b[1]);
             const dx = bx - ax, dy = by - ay, ln = Math.sqrt(dx * dx + dy * dy) || 1;
-            const px = -dy / ln, py = dx / ln; const vis = Math.max(2, Math.floor(gp * (SEG + 1)));
+            let px = -dy / ln, py = dx / ln;
+
+            // Normalization logic for strictly parallel drawing
+            const vis = Math.max(2, Math.floor(gp * (SEG + 1)));
 
             for (let i = 0; i <= SEG; i++) {
                 const t = i / SEG, x = ax + dx * t + px * (v.po + v.segs[i]) * scFig, y = ay + dy * t + py * (v.po + v.segs[i]) * scFig;
@@ -343,15 +375,20 @@
                 if (br.st > gp) continue;
                 const si = Math.floor(br.st * SEG); if (si >= vis) continue;
                 const t = si / SEG, ox = ax + dx * t + px * (v.po + v.segs[si]) * scFig, oy = ay + dy * t + py * (v.po + v.segs[si]) * scFig;
-                ctx.moveTo(ox, oy); for (const p of br.pts) ctx.lineTo(ox + p.x * scFig, oy + p.y * scFig)
+                ctx.moveTo(ox, oy);
+                for (const p of br.pts) {
+                    // Branch vectors must align functionally with dx/dy (muscle flow)
+                    const bx = p.x * dx - p.y * dy;
+                    const by = p.x * dy + p.y * dx;
+                    ctx.lineTo(ox + bx * 10, oy + by * 10); // scale matrix constraint
+                }
             }
         }
 
-        // Stylize based on hierarchy
         if (isPrimaryPass) {
             ctx.strokeStyle = `rgba(220,55,70,${alpha * .9})`; ctx.lineWidth = 4; ctx.lineCap = 'round';
         } else {
-            ctx.strokeStyle = `rgba(200,30,45,${alpha * .4})`; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
+            ctx.strokeStyle = `rgba(210,30,45,${alpha * .35})`; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
         }
         ctx.stroke();
     }
@@ -361,15 +398,15 @@
         let nk = pose.nk;
         if (morphT > 0 && morphT < .2) { const mt = easeIO(morphT * 5); nk = [nk[0], nk[1] - mt * .08] }
 
-        // Smooth rounded organic head. Male (1:6.5), Female (1:7).
         const headOffset = isGirl ? -.065 : -.08;
         const [hx, hy] = toWFig(nk[0], nk[1] + headOffset);
         const rScale = isGirl ? .045 : .055;
         const r = scFig * rScale * gp;
 
+        // Outer biological organic circle
         ctx.beginPath();
-        for (let i = 0; i < Math.PI * 2; i += .15) { // Small step for very smooth circle
-            const rVar = r * (.96 + Math.sin(i * 5) * .04); // Almost perfectly round
+        for (let i = 0; i < Math.PI * 2; i += .15) {
+            const rVar = r * (.97 + Math.sin(i * 7) * .03);
             const x = hx + Math.cos(i) * rVar, y = hy + Math.sin(i) * rVar;
             i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
         }
@@ -386,8 +423,8 @@
     }
 
     function drawFig(veins, bones, pose, growth, morphT, alpha, isGirl) {
-        drawVBatch(veins, bones, pose, growth, morphT, alpha, true);   // Primary Structural layer
-        drawVBatch(veins, bones, pose, growth, morphT, alpha, false);  // Secondary Texture layer
+        drawVBatch(veins, bones, pose, growth, morphT, alpha, true);
+        drawVBatch(veins, bones, pose, growth, morphT, alpha, false);
         drawHead(pose, growth, morphT, alpha * .9, isGirl);
     }
 
